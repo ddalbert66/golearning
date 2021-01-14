@@ -19,3 +19,16 @@ func (node *Node) traverseFunc(f func(*Node)) {
 	f(node)
 	node.Right.traverseFunc(f)
 }
+
+
+func (node *Node) TraverseWithChannel() chan *Node{
+	out := make(chan *Node)
+	go func() {
+		node.traverseFunc(func(node *Node){
+			out <- node
+		})
+		close(out)
+	}()
+	return out
+
+}
