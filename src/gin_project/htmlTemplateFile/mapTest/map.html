@@ -1,0 +1,18 @@
+{{define "mapTest/map.html"}}
+<table id="producttable">
+    
+    <tbody>
+      <!-- 在這裡可以選擇性地包括既有資料 -->
+     {{.name}}
+     {{.name2}}
+     {{.name3}}
+    </tbody>
+  </table>
+  
+  <template id="productrow">
+    <tr>
+      <td class="record"></td>
+      <td></td>
+    </tr>
+  </template>
+  {{end}}

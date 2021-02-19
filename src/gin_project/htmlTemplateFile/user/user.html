@@ -1,0 +1,23 @@
+{{define "user/user.html"}}
+<table id="producttable">
+    <thead>
+      <tr>
+        <td>sheldon</td>
+        <td>sheldonTest</td>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 在這裡可以選擇性地包括既有資料 -->
+      {{.Id}}<br>
+      {{.Name}}<br>
+      {{.Old}}<br>
+    </tbody>
+  </table>
+  
+  <template id="productrow">
+    <tr>
+      <td class="record"></td>
+      <td></td>
+    </tr>
+  </template>
+  {{end}}

@@ -1,0 +1,19 @@
+{{define "arrTest/arrUser.html"}}
+<table id="producttable">
+    
+    <tbody>
+      <!-- 在這裡可以選擇性地包括既有資料 -->
+      {{range $i,$v := .}}
+      <p> {{$i}} :
+        {{$v.Id}} - {{$v.Name}}-{{$v.Old}}</p> 
+      {{end}}
+    </tbody>
+  </table>
+  
+  <template id="productrow">
+    <tr>
+      <td class="record"></td>
+      <td></td>
+    </tr>
+  </template>
+  {{end}}

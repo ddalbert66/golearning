@@ -1,0 +1,20 @@
+{{define "index.html"}}
+<table id="producttable">
+    <thead>
+      <tr>
+        <td>UPC_Code</td>
+        <td>Product_Name {{.}}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 在這裡可以選擇性地包括既有資料 -->
+    </tbody>
+  </table>
+  
+  <template id="productrow">
+    <tr>
+      <td class="record"></td>
+      <td></td>
+    </tr>
+  </template>
+  {{end}}
