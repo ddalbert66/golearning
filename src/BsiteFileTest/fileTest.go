@@ -1,19 +1,21 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"bufio"
+	"fmt"
 	"io"
+	"os"
+
 	"github.com/axgle/mahonia"
 )
-//func main() {
+
+func main() {
 
 	var enc mahonia.Decoder
 	enc = mahonia.NewDecoder("UTF-8")
-	
-	filePath:= "D:/GitBranch/GOlangLearn/golearning/src/BsiteFileTest/test.txt"
-	fileInfo , error := os.Stat(filePath)
+
+	filePath := "D:/GitBranch/GOlangLearn/golearning/src/BsiteFileTest/test.txt"
+	fileInfo, error := os.Stat(filePath)
 
 	if error != nil {
 		fmt.Println(error)
@@ -35,8 +37,8 @@ import (
 
 	//讀取文件
 	//1.打開文件
-	file,err :=os.Open(filePath)
-	if err !=nil {
+	file, err := os.Open(filePath)
+	if err != nil {
 		fmt.Println("err")
 		return
 	}
@@ -56,21 +58,17 @@ import (
 	// 	}
 	// 	fmt.Println(string(bs[:n]))
 	// }
-	
+
 	//创建一个 *Reader , 是带缓冲的, 默认缓冲区为4096个字节
 	reader := bufio.NewReader(file)
 
 	for {
 		str, err := reader.ReadString('\n') //读到一个换行就结束
-		if err == io.EOF { //io.EOF表示文件的末尾
-		   break
+		if err == io.EOF {                  //io.EOF表示文件的末尾
+			break
 		}
 		//输出内容
 		fmt.Println("UTF-8 to GBK:", enc.ConvertString(str))
-	 }
-  
-
-
-
+	}
 
 }
