@@ -6,17 +6,23 @@ import (
 
 func Test_pipe(t *testing.T) {
 	tests := []struct {
-		num int
-		ans int
+		name     string
+		value    int
+		funcList []func(int) int
+		want     int
 	}{
-		{pipe(5, increment, increment, increment), 8},
-		{pipe(5, increment), 6},
-		{pipe(5, increment, increment), 7},
+		{"1", 5, []func(int) int{increment, increment, increment}, 8},
+		{"2", 5, []func(int) int{increment, increment}, 7},
+		{"3", 5, []func(int) int{increment}, 6},
+		{"4", 5, []func(int) int{increment, increment, increment}, 8},
+		{"5", 5, []func(int) int{increment, increment, increment, increment}, 9},
 	}
 
 	for _, tt := range tests {
-		if tt.num != tt.ans {
-			t.Errorf("Go TestlenpeatingSubStr(%d) ;"+"got %s; %d", tt.num, tt.ans)
-		}
+		t.Run(tt.name, func(t *testing.T) {
+			if got := pipe(tt.value, tt.funcList...); got != tt.want {
+				t.Errorf("pipe() = %v,vant %v", got, tt.want)
+			}
+		})
 	}
 }
