@@ -17,7 +17,7 @@ var (
 	}
 )
 
-func main() {
+//func main() {
 
 	db, err := gorm.Open("mysql", "root:abcd1234@tcp(127.0.0.1:3306)/bento?charset=utf8&loc=Local&parseTime=true")
 	if err != nil {

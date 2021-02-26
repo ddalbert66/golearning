@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"goLearning20200930/src/gorm_Project/models"
-"goLearning20200930/src/gorm_Project/oneToOneModels"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-//func main() {
+func main() {
 
 	db, err := gorm.Open("mysql", "root:abcd1234@tcp(127.0.0.1:3306)/bento?charset=utf8&loc=Local&parseTime=true")
 	if err != nil {
