@@ -3,18 +3,14 @@ package main
 import (
 	"goLearning20200930/src/gorm_Project/dao"
 	"goLearning20200930/src/gorm_Project/dao/stockDao"
-	"goLearning20200930/src/gorm_Project/stockModels"
+	"goLearning20200930/src/gorm_Project/stockService"
+
+	"strings"
 
 	"github.com/jinzhu/gorm"
-	"gonum.org/v1/plot"
-
-	"gonum.org/v1/plot/plotter"
-	"gonum.org/v1/plot/plotutil"
-
-	"gonum.org/v1/plot/vg"
 )
 
-type Stock stockModels.Stock
+//type Stock stockModels.Stock
 
 func db() *gorm.DB {
 	return dao.GetDB()
@@ -22,21 +18,51 @@ func db() *gorm.DB {
 
 func main() {
 
-	stockArray := stockDao.QueryStockByName("全宇昕")
+	//stockArray := stockDao.QueryStockByName("勤凱")
+	stockArray := stockDao.QueryStock()
+	count := 0
 
-	p, _ := plot.New()
+	var needStockCode string
+	var stockName string
+	var lastRate float64
 
-	p.Title.Text = "全宇昕"
-	p.X.Label.Text = "date"
-	p.Y.Label.Text = "rate"
+	for _, st := range stockArray {
+		if len(stockName) == 0 {
+			stockName = st.StockCode
+		} else if strings.Compare(stockName, st.StockCode) == 0 {
 
-	var plotterXys plotter.XYs
-	for i, st := range stockArray {
-		x := plotter.XY{float64(i), st.TurnoverRate}
-		plotterXys = append(plotterXys, x)
+			if st.TurnoverRate > lastRate {
+				count++
+			}
+
+			if count > 8 {
+				if !strings.Contains(needStockCode, st.StockCode) {
+
+					count = 0
+					stockService.FuncgetGoodStock(st.StockCode)
+					needStockCode = needStockCode + ":" + st.StockCode
+				}
+			}
+		} else if stockName != st.StockCode {
+			stockName = st.StockCode
+			count = 0
+		}
 	}
 
-	plotutil.AddLinePoints(p, plotterXys)
+	defer db().Close()
+	// p, _ := plot.New()
 
-	p.Save(4*vg.Inch, 4*vg.Inch, "price.png")
+	// p.Title.Text = "勤凱"
+	// p.X.Label.Text = "date"
+	// p.Y.Label.Text = "rate"
+
+	// var plotterXys plotter.XYs
+	// for i, st := range stockArray {
+	// 	x := plotter.XY{float64(i), st.TurnoverRate}
+	// 	plotterXys = append(plotterXys, x)
+	// }
+
+	// plotutil.AddLinePoints(p, plotterXys)
+
+	// p.Save(4*vg.Inch, 4*vg.Inch, "price.png")
 }
