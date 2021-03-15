@@ -10,7 +10,7 @@ func main() {
 		"country": "taiwan",
 	}
 
-	m2 := make(map[string]int) //m2 == empty
+	m2 := make(map[string][]int) //m2 == empty
 
 	var m3 map[string]int //m3 == nil
 

@@ -26,20 +26,29 @@ func FuncgetGoodStock(code string) {
 	p.Title.Text = code
 	p.X.Label.Text = "date"
 	p.Y.Label.Text = "rate"
-
-	plotutil.AddLinePoints(p, "TurnoverRate*1000", randomPoints(stockArray),
-		"StockVolume 1000", randomPoints2(stockArray))
+	//plotutil.AddBoxPlots(plt *plot.Plot, width vg.Length, vs ...interface{})
+	plotutil.AddLinePoints(p, "TurnoverRate", randomPoints(stockArray))
 
 	p.Save(4*vg.Inch, 4*vg.Inch, "price"+code+".png")
+
+	p2, _ := plot.New()
+
+	p2.Title.Text = code
+	p2.X.Label.Text = "date"
+	p2.Y.Label.Text = "rate"
+	//plotutil.AddBoxPlots(plt *plot.Plot, width vg.Length, vs ...interface{})
+	plotutil.AddLinePoints(p2, "ClosingPrice", randomPoints2(stockArray))
+
+	p2.Save(4*vg.Inch, 4*vg.Inch, "price"+code+"_2.png")
 }
 
 func randomPoints(stockArray []stockDao.Stock) plotter.XYs {
 	points := make(plotter.XYs, len(stockArray))
 
 	for i := range points {
-		fmt.Println(stockArray[i].TurnoverRate)
+		//fmt.Println(stockArray[i].TurnoverRate)
 		points[i].X = float64(i)
-		points[i].Y = (stockArray[i].TurnoverRate * 1000)
+		points[i].Y = (stockArray[i].TurnoverRate)
 	}
 
 	return points
@@ -49,10 +58,11 @@ func randomPoints2(stockArray []stockDao.Stock) plotter.XYs {
 	points := make(plotter.XYs, len(stockArray))
 
 	for i := range points {
-		fmt.Println(float64(stockArray[i].StockVolume / 1000))
+		fmt.Print(stockArray[i].ClosingPrice)
+		fmt.Print(" ")
 		points[i].X = float64(i)
-		points[i].Y = float64(stockArray[i].StockVolume / 1000)
+		points[i].Y = stockArray[i].ClosingPrice
 	}
-
+	fmt.Println()
 	return points
 }
