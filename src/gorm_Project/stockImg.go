@@ -35,9 +35,9 @@ func main() {
 		} else if strings.Compare(stockName, st.StockCode) == 0 && len(stockName) == 4 {
 			m[stockName] = append(m[stockName], st.TurnoverRate)
 			fmt.Printf("stockName : %s ,TurnoverRate :% f \n", stockName, st.TurnoverRate)
-			if len(m[stockName]) > 15 {
-				fmt.Printf("count :%d, x[15]:%f,x[14]:%f ,StockCode :% s \n", count, m[stockName][15], m[stockName][14], st.StockCode)
-				if count == 15 && m[stockName][15] > m[stockName][14] {
+			if len(m[stockName]) > 24 {
+				fmt.Printf("count :%d, x[24]:%f,x[23]:%f ,StockCode :% s \n", count, m[stockName][15], m[stockName][14], st.StockCode)
+				if count == 24 && m[stockName][24] > m[stockName][23] {
 					fmt.Printf("needStockCode : %s ,StockCode :% s \n", needStockCode, st.StockCode)
 					if !strings.Contains(needStockCode, st.StockCode) {
 

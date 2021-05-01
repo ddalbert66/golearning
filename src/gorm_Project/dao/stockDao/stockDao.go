@@ -44,6 +44,11 @@ func QueryStockByCodeAndDate(code string, dateStr string) (s Stock) {
 	return
 }
 
+func QueryStockByCode(code string) (s []Stock) {
+	db().Order("date_str").Find(&s, "stock_code = ?", code)
+	return
+}
+
 func (s Stock) Update() {
 	db().Save(&s)
 }

@@ -1,0 +1,11 @@
+I graduated from National Chiayi University with a bachelor degree in Management Information Systems Department and finished compulsory military service after graduation.
+
+I got my first software engineer job at a staffing company called Blue Technology with the skills I learned in Institute for Information Industry. I was dispatched to the ESB team of Taiwan Mobile (TWM) for 3 years. The ESB team is responsible for alarm system monitoring all Taiwan Mobile services.
+
+The alarm message come from different services, so the way to transfer is different. Our service have to aggregate different types of alarm message and send it to end user. Java, Spring, Cassandra, WebService and Socket is our main technologies. After a period of time, we refactored the alarm system with apache camel.
+
+In addition to the above mentioned service, our team have another service called EWP (ESB Web Portal). It is used to aggregate statistics of mobile data and transaction of 4G and 3G and base station data. The aggregation can also be exported as a report.
+
+After I left Blue Techology, I joined a gaming company called Chen Chen Techology. The target audience of the service of the company is Chinese. I was responsible for maintaining the lottery system. Vue, Redis, Spring and RabbitMQ are our main techonologies.
+
+I learned golang for one year.

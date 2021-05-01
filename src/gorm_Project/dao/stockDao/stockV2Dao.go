@@ -17,7 +17,12 @@ func (s StockV2) TableName() string {
 	return "Stock_v2"
 }
 
-func QueryStockByCode(code string) (s []Stock) {
+func QueryStockV2ByCode(code string) (s []StockV2) {
 	db().Order("date_str").Find(&s, "stock_code = ?", code)
+	return
+}
+
+func QueryStockByDate(date string) (s []StockV2) {
+	db().Order("stock_code").Find(&s, "date_str = ?", date)
 	return
 }
