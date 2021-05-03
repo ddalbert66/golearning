@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"goLearning20200930/src/gorm_Project/dao"
 	"goLearning20200930/src/gorm_Project/stockModels"
+	"goLearning20200930/src/gorm_Project/stockService"
 	"log"
 
 	"github.com/jinzhu/gorm"
@@ -29,8 +30,8 @@ func main() {
 
 	//var stockCollects []stockModels.StockCollect
 
-	dateStrS2 := "110/04/28"
-	dateStrS1 := "110/04/29"
+	dateStrS2 := "110/04/29"
+	dateStrS1 := "110/05/03"
 
 	rows, err := db.Raw(`select a.* from  (
 		select s1.stock_name,s1.stock_code,s1.turnover_rate2 s1_Rate,s2.turnover_rate2 s2_Rate,floor(s1.shares_traded/1000) stock_Volume,s1.closing_price,s1.date_str,((s1.closing_price-s2.closing_price)/s1.closing_price)*100 closeing_Prince_Rate,s1.stock_type from
@@ -52,6 +53,9 @@ func main() {
 		err = rows.Scan(&stockCollect.StockName, &stockCollect.StockCode, &stockCollect.S1Rate,
 			&stockCollect.S2Rate, &stockCollect.StockVolume, &stockCollect.ClosingPrice, &stockCollect.DateStr, &stockCollect.CloseingPrinceRate, &stockCollect.StockType)
 		//fmt.Printf("%f %f", stockCollect.S1Rate, stockCollect.S2Rate)
+	
+
+
 		if err != nil {
 			fmt.Print(err)
 		}

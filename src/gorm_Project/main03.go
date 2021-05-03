@@ -31,7 +31,7 @@ func InsertV2(s StockV2) uint {
 //寫入上市股票的 資料 不寫入周轉排行
 //周轉排行 要自己查SQL的時候去找發行股票計算
 func main() {
-	dateStr := "110/04/29"
+	dateStr := "110/05/03"
 	year, _ := strconv.Atoi(strings.Split(dateStr, "/")[0])
 	fmt.Print(year)
 	year = year + 1911
