@@ -31,9 +31,9 @@ func InsertV2(s StockV2) uint {
 //寫入上市股票的 資料 不寫入周轉排行
 //周轉排行 要自己查SQL的時候去找發行股票計算
 func main() {
-	dateStr := "110/05/03"
+	dateStr := "110/04/13"
 	year, _ := strconv.Atoi(strings.Split(dateStr, "/")[0])
-	fmt.Print(year)
+	//fmt.Print(year)
 	year = year + 1911
 	mon := strings.Split(dateStr, "/")[1]
 	date := strings.Split(dateStr, "/")[2]
@@ -59,13 +59,15 @@ func main() {
 
 	}
 
+	fmt.Println("end day:",dateStr)
+
 }
 
 func praseStockData(v interface{}, dateStr string) {
 	var jsonObj2 []interface{}
 	b, err := json.Marshal(v)
 	if err != nil {
-		fmt.Println("---")
+		//fmt.Println("---")
 		panic(err)
 	}
 	//var result string
@@ -78,7 +80,7 @@ func praseStockData(v interface{}, dateStr string) {
 		var jsonObj3 []interface{}
 		b2, err := json.Marshal(vs)
 		if err != nil {
-			fmt.Println("---")
+			//.Println("---")
 			panic(err)
 		}
 		//var result string
@@ -91,28 +93,28 @@ func praseStockData(v interface{}, dateStr string) {
 
 			switch i % 18 {
 			case 0:
-				fmt.Print(v2)
-				fmt.Print(" ")
+				//fmt.Print(v2)
+				//fmt.Print(" ")
 				stock.StockCode = v2.(string)
 			case 1:
-				fmt.Print(v2)
-				fmt.Print(" ")
+				//fmt.Print(v2)
+				//fmt.Print(" ")
 				stock.StockName = v2.(string)
 			case 2:
-				fmt.Print(v2)
-				fmt.Print(" ")
+				//fmt.Print(v2)
+				//fmt.Print(" ")
 				tempValue, _ := strconv.Atoi(strings.Replace(v2.(string), ",", "", -1))
 				stock.SharesTraded = tempValue
 			case 3:
-				fmt.Print(v2)
-				fmt.Print(" ")
+				//fmt.Print(v2)
+				//fmt.Print(" ")
 				stock.SharesNum, _ = strconv.Atoi(strings.Replace(v2.(string), ",", "", -1))
 			case 8:
-				fmt.Print(v2)
-				fmt.Print(" ")
+				//fmt.Print(v2)
+				//fmt.Print(" ")
 				stock.ClosingPrice, _ = strconv.ParseFloat(v2.(string), 64)
 			case 15:
-				fmt.Println(v2)
+				//fmt.Println(v2)
 				stock.PEratio, _ = strconv.ParseFloat(v2.(string), 64)
 				if i > 0 {
 					InsertV2(stock)
