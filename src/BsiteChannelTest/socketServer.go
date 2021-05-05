@@ -8,14 +8,16 @@ import (
 
 func main() {
 	serverIp := "127.0.0.1"
-	port := "8088"
+	port := 8848
 	address := fmt.Sprintf("%s:%d", serverIp, port)
 
-	listner, err := net.Listen("TCP", address)
+	listner, err := net.Listen("tcp", address)
 
 	if err != nil {
 		fmt.Println("net.listen err:", err)
 	}
+	fmt.Println("監聽中...")
+
 	conn, err := listner.Accept()
 	if err != nil {
 		fmt.Println("net.listen Accept err:", err)

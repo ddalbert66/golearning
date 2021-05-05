@@ -7,7 +7,15 @@ func printSlice(s []int) {
 }
 
 func main() {
+	var nuils []int
+	nuils = nil
+	var nilMap = make(map[int][]string)
+	nilMap = nil
+
+	fmt.Printf("slice nil v:%v ,map nil v:%v \n", nuils, nilMap)
+	fmt.Println(nuils, nilMap)
 	var s []int
+
 	for i := 1; i < 10; i++ {
 		printSlice(s)
 		s = append(s, i*2+1)
