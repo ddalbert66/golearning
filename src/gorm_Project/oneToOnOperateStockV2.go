@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"goLearning20200930/src/gorm_Project/dao"
 	"goLearning20200930/src/gorm_Project/stockModels"
+	"goLearning20200930/src/gorm_Project/stockService"
 	"log"
 
 	"github.com/jinzhu/gorm"
@@ -52,6 +53,9 @@ func main() {
 		err = rows.Scan(&stockCollect.StockName, &stockCollect.StockCode, &stockCollect.S1Rate,
 			&stockCollect.S2Rate, &stockCollect.StockVolume, &stockCollect.ClosingPrice, &stockCollect.DateStr, &stockCollect.CloseingPrinceRate, &stockCollect.StockType)
 		//fmt.Printf("%f %f", stockCollect.S1Rate, stockCollect.S2Rate)
+	
+
+
 		if err != nil {
 			fmt.Print(err)
 		}

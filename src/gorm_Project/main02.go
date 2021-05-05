@@ -16,7 +16,7 @@ import (
 //依照股票代號 寫入收盤價
 //URL 日期要記得改
 func main() {
-	url := "https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw&o=htm&d=110/05/04&s=0,asc,0"
+	url := "https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw&o=htm&d=110/04/13&s=0,asc,0"
 	urlarray := strings.Split(url, "&")
 	dateStr := strings.Split(urlarray[2], "=")[1]
 
@@ -39,12 +39,12 @@ func main() {
 				stock = stockDao.QueryStockByCodeAndDate(e.Text, dateStr)
 			}
 			//fmt.Printf("排 行:%s", e.Text)
-			fmt.Print(stock)
+			//fmt.Print(stock)
 			//stock.StockCode = e.Text
-			fmt.Printf("股票代號:%s", e.Text)
+			//fmt.Printf("股票代號:%s", e.Text)
 		case 2:
 			//stock.StockName = e.Text
-			fmt.Printf("股票名稱:%s", e.Text)
+			//fmt.Printf("股票名稱:%s", e.Text)
 
 			//stockService.QueryStockCloserPrice(dateStr, stock.StockCode)
 		case 3:
@@ -55,7 +55,7 @@ func main() {
 			} else {
 				stock.ClosingPrice = 0
 			}
-			fmt.Printf("收盤價:%s \n", e.Text)
+			//fmt.Printf("收盤價:%s \n", e.Text)
 
 		}
 
@@ -70,6 +70,7 @@ func main() {
 
 	c.Visit(url)
 	// }
+	fmt.Print("end day:",dateStr)
 
 }
 

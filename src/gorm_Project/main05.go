@@ -30,7 +30,7 @@ func InsertStockV2SV(s StockV2StockVolume) uint {
 //名次	股票名稱	收盤價	漲跌	漲跌幅	成交量	週轉率
 //1	   8021  尖點	 32.20	+ 2.60	 +8.78%	 38,222	 26.88%
 func main() {
-	StockV2arr := stockDao.QueryStockByDate("110/03/17")
+	StockV2arr := stockDao.QueryStockByDate("110/04/29")
 
 	var stock StockV2StockVolume
 

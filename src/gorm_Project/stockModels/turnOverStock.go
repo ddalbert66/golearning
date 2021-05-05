@@ -14,7 +14,11 @@ type Stock struct {
 	IssuedShares int
 	TurnoverRate float64
 	ClosingPrice float64
+	MA5 float64
+	MA10 float64
+	MA20 float64
 	PEratio      float64
+	LineType	string
 	DateStr      string
 	Create_user  string
 	Update_user  string

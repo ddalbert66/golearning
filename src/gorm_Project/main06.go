@@ -4,8 +4,12 @@ import (
 	"bytes"
 	"fmt"
 	"goLearning20200930/src/gorm_Project/dao/stockDao"
+	"goLearning20200930/src/gorm_Project/stockModels"
+	"goLearning20200930/src/gorm_Project/dao"
 	"io/ioutil"
 	"strings"
+	"github.com/jinzhu/gorm"
+
 
 	"github.com/gocolly/colly"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -13,31 +17,31 @@ import (
 	"golang.org/x/text/transform"
 )
 
-// type StockV2StockVolume stockModels.StockV2StockVolume
+ type StockV2StockVolume stockModels.StockV2StockVolume
 
-// func db4() *gorm.DB {
-// 	return dao.GetDB()
-// }
+func db4() *gorm.DB {
+	return dao.GetDB()
+}
 
-// func InsertStockV2SV(s StockV2StockVolume) uint {
-// 	result := db4().Create(&s)
-// 	if result.Error != nil {
-// 		panic(result.Error)
-// 	}
-// 	return s.ID
-// }
+func InsertStockV2SV(s StockV2StockVolume) uint {
+	result := db4().Create(&s)
+	if result.Error != nil {
+		panic(result.Error)
+	}
+	return s.ID
+}
 
 //名次	股票名稱	收盤價	漲跌	漲跌幅	成交量	週轉率
 //1	   8021  尖點	 32.20	+ 2.60	 +8.78%	 38,222	 26.88%
 func main() {
-	StockV2arr := stockDao.QueryStockByDate("110/03/17")
+	StockV2arr := stockDao.QueryStockByDate("110/04/29")
 
-	//var stock StockV2StockVolume
+	var stock StockV2StockVolume
 
 	for _, st := range StockV2arr {
 		if len(st.StockCode) == 4 && !strings.HasPrefix(st.StockCode, "00") {
-			getStockType()
-			//InsertStockV2SV(stock)
+			stock.   getStockType()
+			InsertStockV2SV(stock)
 		}
 
 	}
