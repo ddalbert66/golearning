@@ -9,30 +9,27 @@ type persion struct {
 	sex  string
 }
 
+type runner interface {
+	drink() string
+}
+
+type boss struct {
+	persion
+}
+
 func main() {
 
-	sheldon := persion{
-		name: "sheldon",
-		age:  18,
-		eat:  "food",
-		sex:  "male",
-	}
-
-	fmt.Println(sheldon.name)
-	sheldon.eatFood()
-	fmt.Println(sheldon.name)
-	sheldon.eatFood2()
-	fmt.Println(sheldon.name)
+	b := new(boss)
+	b.name = "boss"
+	fmt.Println(drinkNow(b))
 
 }
 
-func (this persion) eatFood() {
-	fmt.Println(this.name, "eat rise")
-	this.name = "ricky"
+func (this boss) drink() string {
+	return this.name + " drink water"
+
 }
+func drinkNow(r runner) string {
+	return r.drink()
 
-func (this *persion) eatFood2() {
-
-	fmt.Println(this.name, "eat rise")
-	this.name = "ricky"
 }

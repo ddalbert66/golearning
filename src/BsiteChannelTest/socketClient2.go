@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"net"
+	"time"
 )
 
-var messageChan = make(chan string, 10)
+func init() {
+
+}
 
 func main() {
 	var conn net.Conn
@@ -16,21 +19,24 @@ func main() {
 	}
 	fmt.Println("client/server 連接建立成功")
 
-	var message string
-	for {
+	messageChan := make(chan string, 10)
 
-		fmt.Printf("請輸入:")
-		fmt.Scanln(&message)
-		if len(message) > 0 {
-			fmt.Println("message not nil")
-			messageChan <- message
-			go sendMessage(conn, messageChan)
-		}
+	var message string
+	fmt.Printf("請輸入:")
+	fmt.Scanln(&message)
+	if len(message) > 0 {
+		fmt.Println("message not nil")
+		messageChan <- message
+		sendMessage(conn, messageChan)
 	}
+
+	time.Sleep(time.Second * 10)
+
 }
 
 func sendMessage(conn net.Conn, message <-chan string) {
 	fmt.Println("sendMessage")
+	fmt.Println("lll")
 	var msgStr string
 	msgStr = <-message
 
@@ -53,4 +59,5 @@ func sendMessage(conn net.Conn, message <-chan string) {
 
 	fmt.Println("client <=== server cnt:", cnt, ", data:", string(buf[:cnt]))
 
+	time.Sleep(time.Second * 2)
 }

@@ -40,7 +40,7 @@ func QueryStockByDateStr(dateStr string) (s []Stock) {
 //寫入周轉排行 但是沒有收盤價
 //URL 日期要記得改
 func main() {
-	url := "https://www.tpex.org.tw/web/stock/aftertrading/daily_turnover/trn_result.php?l=zh-tw&t=D&d=110/05/04&s=0,asc,1&o=htm"
+	url := "https://www.tpex.org.tw/web/stock/aftertrading/daily_turnover/trn_result.php?l=zh-tw&t=D&d=110/07/22&s=0,asc,1&o=htm"
 
 	urlarray := strings.Split(url, "&")
 	dateStr := strings.Split(urlarray[2], "=")[1]

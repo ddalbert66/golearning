@@ -22,7 +22,7 @@ func QueryStockV2ByCode(code string) (s []StockV2) {
 	return
 }
 
-func QueryStockByDate(date string) (s []StockV2) {
+func QueryStockV2ByDate(date string) (s []StockV2) {
 	db().Order("stock_code").Find(&s, "date_str = ?", date)
 	return
 }
@@ -31,7 +31,6 @@ func QueryStockV2ByCodeAndDate(code string, dateStr string) (s StockV2) {
 	db().First(&s, "stock_code = ? and date_str = ?", code, dateStr)
 	return
 }
-
 
 func (s StockV2) Update() {
 	db().Save(&s)

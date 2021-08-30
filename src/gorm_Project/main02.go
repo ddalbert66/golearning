@@ -16,7 +16,7 @@ import (
 //依照股票代號 寫入收盤價
 //URL 日期要記得改
 func main() {
-	url := "https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw&o=htm&d=110/04/13&s=0,asc,0"
+	url := "https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw&o=htm&d=110/07/22&s=0,asc,0"
 	urlarray := strings.Split(url, "&")
 	dateStr := strings.Split(urlarray[2], "=")[1]
 
@@ -70,7 +70,7 @@ func main() {
 
 	c.Visit(url)
 	// }
-	fmt.Print("end day:",dateStr)
+	fmt.Print("end day:", dateStr)
 
 }
 

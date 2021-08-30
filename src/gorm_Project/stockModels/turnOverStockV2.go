@@ -14,12 +14,12 @@ type StockV2 struct {
 	SharesTraded int
 	SharesNum    int
 	ClosingPrice float64
-	MA5 float64
-	MA10 float64
-	MA20 float64
+	Ma5          float64
+	Ma10         float64
+	Ma20         float64
 	PEratio      float64
 	TurnoverRate float64
-	LineType	string
+	LineType     string
 	DateStr      string
 	Create_user  string
 	Update_user  string

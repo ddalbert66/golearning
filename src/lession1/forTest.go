@@ -2,22 +2,20 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"os"
+	"strings"
 )
 
-//sheldon test covertToBin go doc
-func convertToBin(num int) string {
-	result := ""
-	for ; num > 0; num /= 2 {
-		fmt.Println("num/2:" + strconv.Itoa(num/2))
-		isb := num % 2
-		fmt.Println(isb)
-		result = strconv.Itoa(isb) + result
-	}
-	return result
-}
-
 func main() {
-	fmt.Println(convertToBin(5))
-	fmt.Println(convertToBin(101))
+	s, sep := "", ""
+	for _, arg := range os.Args[0:] {
+		if len(arg) > 0 {
+			s += sep + arg + "\r\n"
+			sep = ""
+		}
+
+	}
+	fmt.Println(s)
+
+	fmt.Println(strings.Join(os.Args[1:], "\r\n"))
 }

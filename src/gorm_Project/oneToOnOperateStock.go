@@ -29,8 +29,8 @@ func main() {
 
 	//var stockCollects []stockModels.StockCollect
 
-	dateStrS2 := "110/05/03"
-	dateStrS1 := "110/05/04"
+	dateStrS2 := "110/05/10"
+	dateStrS1 := "110/05/11"
 
 	rows, err := db.Raw(`SELECT  a.*,st.stock_Type from  (
 		select s1.stock_name,s1.stock_code,s1.turnover_rate s1_Rate,s2.turnover_rate s2_Rate,s1.stock_volume,s1.closing_price,s1.date_str,((s1.closing_price-s2.closing_price)/s1.closing_price)*100 closeing_Prince_Rate 

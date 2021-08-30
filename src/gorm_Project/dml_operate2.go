@@ -15,9 +15,6 @@ func main() {
 	}
 	defer db.Close()
 
-	db.CreateTable(&stockModels.Stock{})
-	db.CreateTable(&stockModels.StockType{})
-	db.CreateTable(&stockModels.StockV2{})
-	db.CreateTable(&stockModels.StockV2StockVolume{})
-	
+	db.CreateTable(&stockModels.StockV2StockVolume2{})
+
 }
